@@ -40,3 +40,12 @@
 .read-the-docs {
   color: #888;
 }
+
+.icon-hard {
+  @apply text-6xl border border-orange-600 p-2 rounded-lg
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
