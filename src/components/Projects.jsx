@@ -4,6 +4,13 @@ import previsaTempoImage from "../assets/images/previsao-tempo.png"
 
 const projects = [
     {
+        title: "Gallery",
+        description: "Buscar imagens e salvar fotos favoritas de forma prática e personalizada.",
+        image: cadastroUsuarioImage,
+        demoLink: "https://app-cadastro-usuario.netlify.app/",
+        codeLink: "https://github.com/maxmalato/cadastro-usuario"
+    },
+    {
         title: "Loggie",
         description: "Cadastrar usuários com autenticação e acesso restrito a usuários registrados.",
         image: loggieImage,

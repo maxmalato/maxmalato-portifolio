@@ -19,23 +19,18 @@ function App() {
         <h1 className="font-bold text-5xl drop-shadow-md text-center lg:text-left dark:text-white">Sobre mim</h1>
 
         <div className="transition hover:border-orange-600 lg:border-l-4 lg:pl-4 flex flex-col gap-3 mt-5">
-          <p className="indent-8 text-justify lg:indent-0 dark:text-white"><span className="text-orange-600 font-bold text-2xl">S</span>ou Maxjannyfer, mas todos me chamam de Max. Tenho 31 anos, sou casado com a Carol e pai do Davi. Atualmente, estou aprimorando meus conhecimentos em React e tecnologias relacionadas, além de continuar com meus projetos pessoais e aprofundar meu entendimento na área de backend.
-
-          </p>
-          <p className="indent-8 text-justify lg:indent-0 dark:text-white"><span
-            className="text-orange-600 font-bold text-2xl">C</span>om mais de 6 anos de experiência como suporte técnico em TI, atualmente atuo como Analista de TI, oferecendo suporte sistêmico. Sou uma pessoa organizada, atenta aos detalhes e valorizo o trabalho em equipe.
-          </p>
-          <p className="indent-8 text-justify lg:indent-0 dark:text-white"><span
-            className="text-orange-600 font-bold text-2xl">F</span>ora do ambiente profissional, gosto de assistir filmes e séries com minha esposa, frequentar a igreja com minha família e sou apaixonado por vídeo games.
-          </p>
+          <p className="indent-8 text-justify lg:indent-0 dark:text-white"><span className="text-orange-600 font-bold text-2xl">S</span>ou Maxjannyfer, mais conhecido como Max. Tenho 31 anos, sou casado com a Carol e pai do Davi. Sou um desenvolvedor web em constante evolução, focado no front-end com React, mas também explorando o back-end para ampliar minhas habilidades. Tenho experiência prática com integração de APIs e estou sempre buscando aprimorar meus conhecimentos em todo o espectro do desenvolvimento web.</p>
+          <p className="indent-8 text-justify lg:indent-0 dark:text-white"><span className="text-orange-600 font-bold text-2xl">A</span>ntes de ingressar na programação, acumulei mais de seis anos de experiência como suporte técnico em TI e, atualmente, atuo como Analista de TI, oferecendo suporte sistêmico. Minha abordagem profissional é marcada pela organização, atenção aos detalhes e valorização do trabalho em equipe.</p>
+          <p className="indent-8 text-justify lg:indent-0 dark:text-white"><span className="text-orange-600 font-bold text-2xl">A</span>lém da tecnologia, sou cristão e baixista. No meu tempo livre, gosto de assistir séries e filmes com minha esposa, frequentar a igreja com minha família e me aventurar no mundo dos vídeo games.</p>
         </div>
       </section>
 
-      {/* Habilidades */}
+      {/* Hard Skills */}
       <section className="mb-10 pt-24" id='skills'>
-        <h2 className="font-bold text-5xl drop-shadow-md text-center lg:text-end mb-5 dark:text-white">Minhas Habilidades</h2>
+        <h2 className="font-bold text-5xl drop-shadow-md text-center lg:text-end dark:text-white">Hard Skill</h2>
+        <h3 className='text-orange-600 text-lg font-semibold drop-shadow-md lg:text-right'>Habilidades tecnológicas</h3>
         <div
-          className="flex flex-wrap gap-2 justify-center lg:justify-end lg:border-r-4 lg:pr-4 transition hover:border-orange-600">
+          className="flex flex-wrap gap-2 justify-center mt-5 lg:justify-end lg:border-r-4 lg:pr-4 transition hover:border-orange-600">
           <i className="devicon-html5-plain-wordmark colored icon-hard rounded-lg"></i>
           <i className="devicon-css3-plain-wordmark colored icon-hard rounded-lg"></i>
           <i className="devicon-javascript-plain colored icon-hard rounded-lg"></i>
@@ -49,6 +44,22 @@ function App() {
           <i className="devicon-nextjs-original-wordmark icon-hard rounded-lg dark:text-white"></i>
           <i className="devicon-mysql-plain-wordmark icon-hard rounded-lg dark:text-white"></i>
           <i className="devicon-microsoftsqlserver-plain-wordmark icon-hard dark:text-white"></i>
+        </div>
+      </section>
+
+      {/* Soft Skills */}
+      <section class="mb-10">
+        <h2 class="font-bold text-5xl drop-shadow-md text-center lg:text-left dark:text-slate-100">Soft Skills</h2>
+        <p class="font-bold text-orange-600 text-center mb-5 tracking-wide lg:text-left">Habilidades pessoais</p>
+        <div class="grid grid-cols-2 gap-4 text-center lg:flex flex-wrap lg:border-l-4 lg:pl-4 transition-colors hover:border-orange-600">
+          <p class=" icon-soft dark:text-slate-100">Organização</p>
+          <p class="icon-soft dark:text-slate-100">Atenção a detalhes</p>
+          <p class="icon-soft dark:text-slate-100">Trabalho colaborativo</p>
+          <p class="icon-soft dark:text-slate-100">Resolução de problemas</p>
+          <p class="icon-soft dark:text-slate-100">Capacidade analítica</p>
+          <p class="icon-soft dark:text-slate-100">Comunicação com clientes</p>
+          <p class="icon-soft dark:text-slate-100">Agilidade</p>
+          <p class="icon-soft dark:text-slate-100">Empatia</p>
         </div>
       </section>
 
