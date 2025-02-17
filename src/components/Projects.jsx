@@ -1,41 +1,42 @@
 import loggieImage from "../assets/images/loggie.jpg"
 import cadastroUsuarioImage from "../assets/images/cadastro-usuario.png"
 import previsaTempoImage from "../assets/images/previsao-tempo.png"
+import gallery from "../assets/images/gallery.png"
 
 const projects = [
     {
         title: "Gallery",
         description: "Buscar imagens e salvar fotos favoritas de forma prática e personalizada.",
-        image: cadastroUsuarioImage,
-        demoLink: "https://app-cadastro-usuario.netlify.app/",
-        codeLink: "https://github.com/maxmalato/cadastro-usuario"
+        image: gallery,
+        demoLink: "https://gallery-maxmalato.netlify.app/",
+        codeLink: "https://github.com/maxmalato/desafio-galeria-de-imagem-frontendfusion",
     },
     {
         title: "Loggie",
         description: "Cadastrar usuários com autenticação e acesso restrito a usuários registrados.",
         image: loggieImage,
         demoLink: "https://app-loggie.onrender.com/",
-        codeLink: "https://github.com/maxmalato/app-loggie"
+        codeLink: "https://github.com/maxmalato/app-loggie",
     },
     {
         title: "Previsão do Tempo",
         description: "Pesquise sobre sua cidade para saber como está o seu clima em tempo real.",
         image: previsaTempoImage,
         demoLink: "https://maxmalato.github.io/previsao-tempo/",
-        codeLink: "https://github.com/maxmalato/previsao-tempo"
+        codeLink: "https://github.com/maxmalato/previsao-tempo",
     },
     {
         title: "Cadastro de Usuário",
         description: "Cadastro de usuário com nome, e-mail e idade no banco de dados.",
         image: cadastroUsuarioImage,
         demoLink: "https://app-cadastro-usuario.netlify.app/",
-        codeLink: "https://github.com/maxmalato/cadastro-usuario"
+        codeLink: "https://github.com/maxmalato/cadastro-usuario",
     },
 ];
 
-const ProjectCard = ({ title, description, image, demoLink, codeLink }) => {
+const ProjectCard = ({ title, description, image, demoLink, codeLink, HardSkills }) => {
     return (
-        <article className="flex flex-col pt-3 px-2 max-w-[350px] h-[500px] bg-slate-100 rounded-lg transition transform drop-shadow-lg hover:-translate-y-2 dark:bg-slate-700">
+        <article className="flex flex-col pt-3 px-2 max-w-[350px] h-[500px] bg-slate-200 rounded-lg transition transform drop-shadow-lg hover:-translate-y-2 dark:bg-slate-600">
             <img className="rounded-md w-[90%] mx-4" src={image} alt={title} />
             <div className="flex flex-col h-full mt-5 gap-3">
                 <div>
