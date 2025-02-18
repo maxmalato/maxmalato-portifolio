@@ -10,6 +10,11 @@ const projects = [
         image: gallery,
         demoLink: "https://gallery-maxmalato.netlify.app/",
         codeLink: "https://github.com/maxmalato/desafio-galeria-de-imagem-frontendfusion",
+        HardSkills: [
+            { icon: "devicon-javascript-plain colored" },
+            { icon: "devicon-react-original colored" },
+            { icon: "devicon-tailwindcss-original colored" },
+        ],
     },
     {
         title: "Loggie",
@@ -17,13 +22,12 @@ const projects = [
         image: loggieImage,
         demoLink: "https://app-loggie.onrender.com/",
         codeLink: "https://github.com/maxmalato/app-loggie",
-    },
-    {
-        title: "Previsão do Tempo",
-        description: "Pesquise sobre sua cidade para saber como está o seu clima em tempo real.",
-        image: previsaTempoImage,
-        demoLink: "https://maxmalato.github.io/previsao-tempo/",
-        codeLink: "https://github.com/maxmalato/previsao-tempo",
+        HardSkills: [
+            {icon: "devicon-javascript-plain colored"},
+            {icon: "devicon-react-original colored"},
+            {icon: "devicon-tailwindcss-original colored"},
+            {icon: "devicon-axios-plain"},
+        ]
     },
     {
         title: "Cadastro de Usuário",
@@ -31,12 +35,32 @@ const projects = [
         image: cadastroUsuarioImage,
         demoLink: "https://app-cadastro-usuario.netlify.app/",
         codeLink: "https://github.com/maxmalato/cadastro-usuario",
+        HardSkills: [
+            { icon: "devicon-javascript-plain colored" },
+            { icon: "devicon-react-original colored" },
+            { icon: "devicon-nodejs-plain colored" },
+            { icon: "devicon-axios-plain" },
+            { icon: "devicon-prisma-original" },
+            { icon: "devicon-express-original"}
+        ]
+    },
+    {
+        title: "Previsão do Tempo",
+        description: "Pesquise sobre sua cidade para saber como está o seu clima em tempo real.",
+        image: previsaTempoImage,
+        demoLink: "https://maxmalato.github.io/previsao-tempo/",
+        codeLink: "https://github.com/maxmalato/previsao-tempo",
+        HardSkills: [
+            { icon: "devicon-html5-plain colored" },
+            { icon: "devicon-css3-plain colored" },
+            { icon: "devicon-javascript-plain colored" },
+        ]
     },
 ];
 
 const ProjectCard = ({ title, description, image, demoLink, codeLink, HardSkills }) => {
     return (
-        <article className="flex flex-col pt-3 px-2 max-w-[350px] h-[500px] bg-slate-200 rounded-lg transition transform drop-shadow-lg hover:-translate-y-2 dark:bg-slate-600">
+        <article className="flex flex-col pt-3 px-2 max-w-[350px] bg-slate-200 rounded-lg transition transform drop-shadow-lg hover:-translate-y-2 dark:bg-slate-600">
             <img className="rounded-md w-[90%] mx-4" src={image} alt={title} />
             <div className="flex flex-col h-full mt-5 gap-3">
                 <div>
@@ -50,6 +74,15 @@ const ProjectCard = ({ title, description, image, demoLink, codeLink, HardSkills
                     <a href={codeLink} target="_blank" aria-label={`Acessar: ${title}`}>
                         <i class='bx bxl-github bx-md bx-tada-hover' ></i>
                     </a>
+                </div>
+                <div className="border-t-2 border-gray-300 dark:border-gray-700">
+                    <ul className="flex justify-center gap-3 p-2">
+                        {HardSkills && HardSkills.map((skill, index) => (
+                            <div key={index}>
+                                <i className={`${skill.icon} text-2xl dark:text-white`}></i>
+                            </div>
+                        ))}
+                    </ul>
                 </div>
             </div>
         </article>
