@@ -28,9 +28,10 @@ const Navbar = () => {
 
 
             {/* Navegação lateral */}
-            <aside className={`z-10 fixed bg-white drop-shadow-lg p-2 rounded-md mt-2 transition-all duration-300 dark:bg-slate-700 ${isAsideVisible ? "opacity-800 translate-x-0" : "opacity-0 -translate-x-1"
-                }`}
-                style={{ pointerEvents: isAsideVisible ? "auto" : "none" }}>
+            <aside
+                className={`absolute left-0 top-16 w-40 bg-white drop-shadow-lg p-2 rounded-md transition-all duration-300 dark:bg-slate-700 ${isAsideVisible ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+                    }`}
+            >
                 <nav aria-label="Menu Lateral" className="flex flex-col items-start gap-2 p-1">
                     <a href="#aboutMe" className="hover:text-orange-400 dark:text-white" onClick={() => setIsAsideVisible(false)}>Sobre Mim</a>
                     <a href="#skills " className="hover:text-orange-400 dark:text-white" onClick={() => setIsAsideVisible(false)}>Habilidades</a>
