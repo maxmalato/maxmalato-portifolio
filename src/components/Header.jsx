@@ -6,7 +6,7 @@ const Header = () => {
             <h1 class="font-bold text-5xl drop-shadow-md mb-3 tracking-wide dark:text-white">Maxjannyfer Malato</h1>
             <p className="text-orange-600 font-semibold text-xl drop-shadow-sm">Desenvolvedor Fron-End</p>
         </div>
-    )
-}
+    );
+};
 
-export default Header
+export default Header;

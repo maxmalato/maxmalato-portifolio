@@ -7,7 +7,7 @@ const Footer = () => {
                 <p>Copyright © <span>{CurrentYear}</span> Maxjannyfer Malato. Todos os direitos reservados.</p>
             </div>
         </footer>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;

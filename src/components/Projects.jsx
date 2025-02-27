@@ -1,7 +1,7 @@
-import loggieImage from "../assets/images/loggie.jpg"
-import cadastroUsuarioImage from "../assets/images/cadastro-usuario.png"
-import previsaTempoImage from "../assets/images/previsao-tempo.png"
-import gallery from "../assets/images/gallery.png"
+import loggieImage from "../assets/images/loggie.jpg";
+import cadastroUsuarioImage from "../assets/images/cadastro-usuario.png";
+import previsaTempoImage from "../assets/images/previsao-tempo.png";
+import gallery from "../assets/images/gallery.png";
 
 const projects = [
     {

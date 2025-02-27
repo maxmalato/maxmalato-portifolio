@@ -1,4 +1,4 @@
-import curriculo from "../assets/documents/curriculo-maxjannyfer.pdf"
+import curriculo from "../assets/documents/curriculo-maxjannyfer.pdf";
 
 const SocialLinks = () => {
     return (
@@ -12,7 +12,7 @@ const SocialLinks = () => {
             </div>
 
         </article>
-    )
-}
+    );
+};
 
-export default SocialLinks
+export default SocialLinks;

@@ -1,12 +1,12 @@
-import { useState } from "react"
-import ThemeSwitcher from "./ThemeSwitcher"
+import { useState } from "react";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Navbar = () => {
-    const [isAsideVisible, setIsAsideVisible] = useState(false)
+    const [isAsideVisible, setIsAsideVisible] = useState(false);
 
     const toggleAside = () => {
         setIsAsideVisible(!isAsideVisible)
-    }
+    };
 
     return (
         <header className="sticky top-8 drop-shadow-md z-10 bg-white/75 rounded-lg dark:bg-slate-700/75">
@@ -39,7 +39,7 @@ const Navbar = () => {
                 </nav>
             </aside>
         </header>
-    )
-}
+    );
+};
 
-export default Navbar
+export default Navbar;
