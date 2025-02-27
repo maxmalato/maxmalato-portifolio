@@ -10,8 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@eslint/config-array": "^0.19.2",
+    "@eslint/object-schema": "^2.1.6",
+    "@humanwhocodes/config-array": "^0.11.14",
+    "@humanwhocodes/object-schema": "^2.0.3",
+    "glob": "^11.0.1",
+    "inflight": "^1.0.6",
+    "lru-cache": "^11.0.2",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "rimraf": "^6.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
@@ -24,6 +32,6 @@
     "eslint-plugin-react-refresh": "^0.4.7",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.17",
-    "vite": "^5.3.4"
+    "vite": "^6.2.0"
   }
 }
