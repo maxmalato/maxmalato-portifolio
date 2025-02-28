@@ -12,8 +12,27 @@ export const FeedbackProvider = ({ children }) => {
             .catch((error) => console.error("Erro ao buscar feedbacks", error));
     }, []);
 
+    const addFeedback = (feedback) => {
+        const newFeedback = {
+            ...feedback,
+            id: Date.now(),
+            userId: sessionStorage.getItem("currentUser"),
+            createdAt: new Date().toLocaleString(),
+            updatedAt: new Date().toLocaleString(),
+        };
+        setFeedbacks([...feedbacks, newFeedback]);
+    };
+
+    const editFeedback = (updatedFeedback) => {
+        setFeedbacks(feedbacks.map(feedback => feedback.id === updatedFeedback.id ? updatedFeedback : feedback));
+    };
+
+    const deleteFeedback = (feedbackId) => {
+        setFeedbacks(feedbacks.filter(feedback => feedback.id !== feedbackId));
+    };
+
     return (
-        <FeedbackContext.Provider value={{ feedbacks }}>
+        <FeedbackContext.Provider value={{ feedbacks, addFeedback, editFeedback, deleteFeedback }}>
             {children}
         </FeedbackContext.Provider>
     );
