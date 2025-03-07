@@ -69,10 +69,10 @@ const ProjectCard = ({ title, description, image, demoLink, codeLink, HardSkills
                 </div>
                 <div className="flex gap-10 justify-center dark:text-white">
                     <a href={demoLink} target="_blank" aria-label={`Acessar: ${title}`}>
-                        <i class='bx bx-link-alt bx-md bx-tada-hover'></i>
+                        <i className='bx bx-link-alt bx-md bx-tada-hover'></i>
                     </a>
                     <a href={codeLink} target="_blank" aria-label={`Acessar: ${title}`}>
-                        <i class='bx bxl-github bx-md bx-tada-hover' ></i>
+                        <i className='bx bxl-github bx-md bx-tada-hover' ></i>
                     </a>
                 </div>
                 <div className="border-t-2 border-gray-300 dark:border-gray-700">
