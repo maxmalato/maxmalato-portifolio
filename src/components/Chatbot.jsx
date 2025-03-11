@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import responses from "../responses.json"; // Verifique se esse caminho está correto!
+import responses from "../responses.json";
+import { getChatCompletion } from "../services/apiChatBot"; // Importa a função da API
 
 // Função para remover acentos e normalizar texto
 const normalizeText = (text) => {
@@ -20,21 +21,23 @@ const ChatBot = () => {
 
     const userMessage = { text: input, user: true };
 
-    const botReplyText = getBotReply(input);
+    // Adiciona a mensagem do usuário ao estado
+    setMessages((prev) => [...prev, userMessage]);
+
+    // Verifica se a pergunta é sobre o currículo
+    const botReplyText = await getBotReply(input);
     const botMessage = { text: botReplyText, user: false };
 
-    // Adiciona as mensagens ao estado
-    setMessages((prev) => [...prev, userMessage, botMessage]);
+    // Adiciona a mensagem do bot ao estado
+    setMessages((prev) => [...prev, botMessage]);
 
     setInput("");
   };
 
-  const getBotReply = (input) => {
+  const getBotReply = async (input) => {
     const normalizedInput = normalizeText(input);
 
-    console.log("Usuário digitou:", input); // Depuração
-    console.log("Texto normalizado:", normalizedInput);
-
+    // Verifica se a pergunta é sobre o currículo
     if (
       normalizedInput.includes("habilidade pessoal") ||
       normalizedInput.includes("habilidades pessoais") ||
@@ -47,30 +50,33 @@ const ChatBot = () => {
     }
     if (
       normalizedInput.includes("habilidade tecnológica") ||
-      normalizedInput.includes("habilidades tecnológicas") ||
       normalizedInput.includes("habilidade tecnologica") ||
+      normalizedInput.includes("habilidades tecnológicas") ||
       normalizedInput.includes("habilidades tecnologicas") ||
-      normalizedInput.includes("hard skills")
+      normalizedInput.includes("habilidade") ||
+      normalizedInput.includes("habilidades") ||
+      normalizedInput.includes("hard skill") ||
+      normalizedInput.includes("hard skill")
     ) {
-      return `⚡ Minhas habilidades tecnológicas incluem: ${responses.skills.hardSkills.join(
+      return `⚡ Minhas habilidades incluem: ${responses.skills.hardSkills.join(
         ", "
       )}.`;
     }
     if (
       normalizedInput.includes("experiencia") ||
+      normalizedInput.includes("experiencias") ||
+      normalizedInput.includes("experiência") ||
       normalizedInput.includes("experiência")
     ) {
-      return `💼 Minhas experiências incluem: ${responses.experience
+      return `💼 Minha experiência inclui: ${responses.experience
         .map(
           (exp) =>
-            `${exp.position} na ${exp.company} de (${exp.start_date} até ${exp.end_date})`
+            `${exp.position} na ${exp.company} (${exp.start_date} - ${exp.end_date})`
         )
-        .join(" e ")}.`;
+        .join(", ")}.`;
     }
     if (
       normalizedInput.includes("educacao") ||
-      normalizedInput.includes("formação") ||
-      normalizedInput.includes("formacao") ||
       normalizedInput.includes("educação")
     ) {
       return `🎓 Minha educação inclui: ${responses.education
@@ -78,10 +84,12 @@ const ChatBot = () => {
           (edu) =>
             `${edu.degree} pela ${edu.institution} (${edu.completion_year})`
         )
-        .join(" e ")}.`;
+        .join(", ")}.`;
     }
     if (
       normalizedInput.includes("projetos") ||
+      normalizedInput.includes("projeto") ||
+      normalizedInput.includes("project") ||
       normalizedInput.includes("projects")
     ) {
       return responses.projects
@@ -93,6 +101,8 @@ const ChatBot = () => {
     }
     if (
       normalizedInput.includes("contato") ||
+      normalizedInput.includes("contatos") ||
+      normalizedInput.includes("contacts") ||
       normalizedInput.includes("contact")
     ) {
       return `📩 Você pode me contatar pelo e-mail: ${responses.contact}`;
@@ -127,8 +137,30 @@ const ChatBot = () => {
     ) {
       return `🌐 Meu portfólio: ${responses.portfolio}`;
     }
+    if (
+      normalizedInput.includes("responsabilidade") ||
+      normalizedInput.includes("responsabilidades") ||
+      normalizedInput.includes("atividades") ||
+      normalizedInput.includes("atividade")
+    ) {
+      const company = responses.experience.find((exp) =>
+        normalizedInput.includes(normalizeText(exp.company))
+      );
+      if (company) {
+        return `As responsabilidades de Max na empresa ${company.company} são: ${company.responsibilities}.`;
+      }
+    }
 
-    return "❌ Não entendi, poderia reformular?";
+    // Se a pergunta não for específica do currículo, chama a API da Hugging Face
+    const botReply = await getChatCompletion([
+      {
+        role: "system",
+        content:
+          "Você é um assistente que responde perguntas sobre o currículo de Maxjannyfer Segtowyck Malato.",
+      },
+      { role: "user", content: input },
+    ]);
+    return botReply.content;
   };
 
   const handleClickOutside = (event) => {
