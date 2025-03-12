@@ -41,6 +41,8 @@ const ChatBot = () => {
     if (
       normalizedInput.includes("habilidade pessoal") ||
       normalizedInput.includes("habilidades pessoais") ||
+      normalizedInput.includes("pessoais") ||
+      normalizedInput.includes("pessoal") ||
       normalizedInput.includes("soft skill") ||
       normalizedInput.includes("soft skills")
     ) {
@@ -53,6 +55,8 @@ const ChatBot = () => {
       normalizedInput.includes("habilidade tecnologica") ||
       normalizedInput.includes("habilidades tecnológicas") ||
       normalizedInput.includes("habilidades tecnologicas") ||
+      normalizedInput.includes("tecnologias") ||
+      normalizedInput.includes("tecnologia") ||
       normalizedInput.includes("habilidade") ||
       normalizedInput.includes("habilidades") ||
       normalizedInput.includes("hard skill") ||
