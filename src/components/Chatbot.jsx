@@ -218,7 +218,7 @@ const ChatBot = () => {
       ) : (
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="p-4 bg-orange-600 text-white rounded-full shadow-lg"
+          className="p-4 bg-orange-600 text-white rounded-s-xl dark:bg-slate-100 dark:text-orange-600"
         >
           <i className="bx bx-bot bx-tada-hover bx-sm"></i>
         </button>
