@@ -189,26 +189,26 @@ const ChatBot = () => {
             {messages.map((msg, index) => (
               <div
                 key={index}
-                className={`text-${msg.user ? "right" : "left"} mb-2`}
+                className={`text-${msg.user ? "right" : "left"} mb-2 border-b p-1`}
               >
                 <strong>{msg.user ? "Você" : "Bot"}:</strong> {msg.text}
               </div>
             ))}
           </div>
-          <div className="flex mt-2">
+          <div className="flex items-center gap-1 py-1">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder="Pergunte algo..."
-              className="flex-grow p-2 border border-gray-300 rounded-l"
+              className="p-2 focus:outline-none"
             />
             <button
               onClick={handleSend}
-              className="p-2 bg-orange-600 text-white rounded-r"
+              className="p-3 bg-orange-600 text-white rounded-lg"
             >
-              Enviar
+              <i className="bx bxs-send bx-fade-right-hover"></i>
             </button>
           </div>
         </div>
@@ -217,7 +217,7 @@ const ChatBot = () => {
           onClick={() => setIsOpen(!isOpen)}
           className="p-4 bg-orange-600 text-white rounded-full shadow-lg"
         >
-          <i className="bx bx-bot bx-tada bx-sm"></i>
+          <i className="bx bx-bot bx-tada-hover bx-sm"></i>
         </button>
       )}
     </div>
