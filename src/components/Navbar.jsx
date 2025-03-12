@@ -21,7 +21,7 @@ const Navbar = () => {
                     <i className='bx bx-menu bx-md'></i>
                 </button>
                 <a href="#home">
-                    <i class='bx bx-home-alt bx-tada-hover bx-sm dark:text-white' ></i>
+                    <i className='bx bx-home-alt bx-tada-hover bx-sm dark:text-white' ></i>
                 </a>
                 <ThemeSwitcher />
             </div>
