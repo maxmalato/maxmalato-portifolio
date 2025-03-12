@@ -27,7 +27,7 @@ const FeedbackList = () => {
     };
 
     return (
-        <article>
+        <article id="feedbacks" className="pt-24">
             <div className="dark:bg-slate-700 dark:text-slate-100">
                 <h2 className="font-bold text-5xl drop-shadow-md text-center dark:text-slate-100">Comentários</h2>
                 <p className="font-bold text-orange-600 text-center mb-5 tracking-wide">Não esqueça de deixar algum comentário!</p>

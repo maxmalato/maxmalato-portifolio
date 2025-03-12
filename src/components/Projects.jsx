@@ -91,7 +91,7 @@ const ProjectCard = ({ title, description, image, demoLink, codeLink, HardSkills
 
 const Projects = () => {
     return (
-        <section className="">
+        <section id="projects" className="pt-24">
             <h2 className="font-bold text-5xl drop-shadow-md text-center mb-8 dark:text-white">Meus projetos</h2>
             <div className="flex flex-wrap gap-6 justify-center lg:grid lg:grid-cols-3">
                 {projects.map((project, index) => (
