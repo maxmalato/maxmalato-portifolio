@@ -195,20 +195,19 @@ const ChatBot = () => {
               </div>
             ))}
           </div>
-          <div className="flex items-center gap-1 py-1">
+          <div className="flex items-center justify-between p-4">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
-              placeholder="Pergunte algo..."
-              className="p-2 focus:outline-none"
+              placeholder="Em que posso ajudar?"
+              className="w-full p-2 rounded-lg focus:outline-none"
             />
             <button
               onClick={handleSend}
-              className="p-3 bg-orange-600 text-white rounded-lg"
             >
-              <i className="bx bxs-send bx-fade-right-hover"></i>
+              <i className="bx bxs-send bx-tada-hover bg-orange-600 p-3 rounded-lg text-white"></i>
             </button>
           </div>
         </div>
