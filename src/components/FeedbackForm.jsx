@@ -15,20 +15,21 @@ const FeedbackForm = ({ editingFeedback, setEditingFeedback }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (editingFeedback) {
       editFeedback({
         ...editingFeedback,
         name,
         comment,
-        updatedAt: new Date().toLocaleString(),
+        updatedAt: new Date().toISOString(),
       });
-      setEditingFeedback(null);
     } else {
-      const userId = sessionStorage.getItem("currentUser");
-      addFeedback({ userId, name, comment });
+      addFeedback({ name, comment });
     }
+
     setName("");
     setComment("");
+    setEditingFeedback(null);
   };
 
   return (

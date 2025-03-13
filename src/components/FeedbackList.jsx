@@ -19,14 +19,14 @@ const FeedbackList = () => {
 
   const handleDelete = (feedbackId) => {
     const feedback = feedbacks.find((f) => f.id === feedbackId);
-    const storeUSer = sessionStorage.getItem("currentUser");
+    const storedUser = sessionStorage.getItem("currentUser");
 
-    if (!feedback || !storeUSer) {
+    if (!feedback || !storedUser) {
       alert("Erro ao identificar o usuário ou o comentário.");
       return;
     }
 
-    if (feedback.userId.toString() == storeUSer.toString()) {
+    if (feedback.userId?.toString() === storedUser.toString()) {
       deleteFeedback(feedbackId);
     } else {
       alert("Você não tem permissão para excluir este comentário.");
@@ -34,15 +34,18 @@ const FeedbackList = () => {
   };
 
   const formatDate = (dateString) => {
-    const options = {
+    if (!dateString) return "Data não disponível";
+    const date = new Date(dateString);
+    if (isNaN(date)) return "Data inválida";
+
+    return date.toLocaleString("pt-BR", {
       day: "2-digit",
       month: "2-digit",
       year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
       second: "2-digit",
-    };
-    return new Date(dateString).toLocaleString("pt-BR", options);
+    });
   };
 
   return (
@@ -78,11 +81,15 @@ const FeedbackList = () => {
               </p>
               <p className="text-start text-sm italic mt-6">
                 <span className="font-semibold">Criado em:</span>{" "}
-                {formatDate(feedback.createdAt)}
+                {feedback.createdAt
+                  ? formatDate(feedback.createdAt)
+                  : "Data não disponível"}
               </p>
               <p className="text-start text-sm italic">
                 <span className="font-semibold">Atualizado em:</span>{" "}
-                {formatDate(feedback.updatedAt)}
+                {feedback.updatedAt
+                  ? formatDate(feedback.updatedAt)
+                  : "Nunca atualizado"}
               </p>
               <div className="flex gap-3">
                 <button
