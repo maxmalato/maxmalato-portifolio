@@ -19,7 +19,14 @@ const FeedbackList = () => {
 
   const handleDelete = (feedbackId) => {
     const feedback = feedbacks.find((f) => f.id === feedbackId);
-    if (feedback.userId === currentUser) {
+    const storeUSer = sessionStorage.getItem("currentUser");
+
+    if (!feedback || !storeUSer) {
+      alert("Erro ao identificar o usuário ou o comentário.");
+      return;
+    }
+
+    if (feedback.userId.toString() == storeUSer.toString()) {
       deleteFeedback(feedbackId);
     } else {
       alert("Você não tem permissão para excluir este comentário.");

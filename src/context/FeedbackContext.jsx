@@ -1,61 +1,101 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
-    const [feedbacks, setFeedbacks] = useState([]);
+  const [feedbacks, setFeedbacks] = useState([]);
 
-    useEffect(() => {
-        fetch("https://backend-portifolio-production.up.railway.app/feedbacks")
-            .then((response) => response.json())
-            .then((data) => setFeedbacks(data))
-            .catch((error) => console.error("Erro ao buscar feedbacks", error));
-    }, []);
+  useEffect(() => {
+    fetch("https://backend-portifolio-production.up.railway.app/feedbacks")
+      .then((response) => response.json())
+      .then((data) => setFeedbacks(data))
+      .catch((error) => console.error("Erro ao buscar feedbacks", error));
+  }, []);
 
-    const addFeedback = (feedback) => {
-        const newFeedback = {
-            ...feedback,
-            id: Date.now(),
-            userId: sessionStorage.getItem("currentUser"),
-            createdAt: new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" }),
-            updatedAt: new Date().toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo" }),
-        };
+  useEffect(() => {
+    let userId = sessionStorage.getItem("currentUser");
+    if (!userId) {
+      userId = String(Date.now());
+      sessionStorage.setItem("currentUser", userId);
+    }
+  }, []);
 
-        console.log("Adicionando feedback:", newFeedback);
+  // Criação de um novo feedback
+  const addFeedback = (feedback) => {
+    const userId = sessionStorage.getItem("currentUser");
 
-        fetch("https://backend-portifolio-production.up.railway.app/feedbacks", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(newFeedback)
-        })
-            .then((response) => response.json())
-            .then((data) => {
-                // Garantir que o userId seja mantido corretamente
-                data.userId = newFeedback.userId;
-                console.log("Resposta do servidor:", data);
-                setFeedbacks([...feedbacks, data]);
-            })
-            .catch((error) => console.error("Erro ao adicionar feedback", error));
+    const newFeedback = {
+      name: feedback.name,
+      comment: feedback.comment,
     };
 
-    const editFeedback = (updatedFeedback) => {
-        setFeedbacks(feedbacks.map(feedback => feedback.id === updatedFeedback.id ? updatedFeedback : feedback));
-    };
+    fetch("https://backend-portifolio-production.up.railway.app/feedbacks", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(newFeedback),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        setFeedbacks([...feedbacks, data]);
+      })
+      .catch((error) => console.error("Erro ao adicionar feedback", error));
+  };
 
-    const deleteFeedback = (feedbackId) => {
-        setFeedbacks(feedbacks.filter(feedback => feedback.id !== feedbackId));
-    };
+  // Edição de um feedback
+  const editFeedback = (updatedFeedback) => {
+    const userId = sessionStorage.getItem("currentUser");
 
-    return (
-        <FeedbackContext.Provider value={{ feedbacks, addFeedback, editFeedback, deleteFeedback }}>
-            {children}
-        </FeedbackContext.Provider>
-    );
+    fetch(
+      `https://backend-portifolio-production.up.railway.app/feedbacks/${updatedFeedback.id}`,
+      {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...updatedFeedback, userId }),
+      }
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        setFeedbacks(
+          feedbacks.map((feedback) =>
+            feedback.id === data.id ? data : feedback
+          )
+        );
+      })
+      .catch((error) => console.error("Erro ao editar feedback", error));
+  };
+
+  // Deletar um feedback
+  const deleteFeedback = (feedbackId) => {
+    const userId = sessionStorage.getItem("currentUser");
+
+    fetch(
+      `https://backend-portifolio-production.up.railway.app/feedbacks/${feedbackId}`,
+      {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userId }),
+      }
+    )
+      .then(() => {
+        setFeedbacks(
+          feedbacks.filter((feedback) => feedback.id !== feedbackId)
+        );
+      })
+      .catch((error) => console.error("Erro ao deletar feedback", error));
+  };
+
+  return (
+    <FeedbackContext.Provider
+      value={{ feedbacks, addFeedback, editFeedback, deleteFeedback }}
+    >
+      {children}
+    </FeedbackContext.Provider>
+  );
 };
 
 FeedbackProvider.propTypes = {
-    children: PropTypes.node.isRequired,
+  children: PropTypes.node.isRequired,
 };
 
 export const useFeedback = () => useContext(FeedbackContext);
