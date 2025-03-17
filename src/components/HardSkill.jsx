@@ -21,6 +21,8 @@ const HardSkill = () => {
         <i className="devicon-nextjs-original-wordmark icon-hard rounded-lg dark:text-white"></i>
         <i className="devicon-mysql-plain-wordmark icon-hard rounded-lg dark:text-white"></i>
         <i className="devicon-microsoftsqlserver-plain-wordmark icon-hard dark:text-white"></i>
+        <i className="devicon-supabase-plain-wordmark icon-hard dark:text-white"></i>
+          
       </div>
     </section>
   );

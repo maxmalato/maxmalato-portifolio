@@ -57,7 +57,7 @@ const FeedbackForm = ({ editingFeedback, setEditingFeedback }) => {
       />
       <button
         type="submit"
-        className="p-2 rounded-lg bg-orange-600 text-white w-96 font-semibold self-center"
+        className="p-2 rounded-lg bg-orange-600 text-white w-80 font-semibold self-center"
       >
         {editingFeedback ? "Salvar" : "Enviar"}
       </button>
