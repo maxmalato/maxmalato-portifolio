@@ -5,6 +5,8 @@ const FeedbackContext = createContext();
 
 export const FeedbackProvider = ({ children }) => {
   const [feedbacks, setFeedbacks] = useState([]);
+  const initialUserId = sessionStorage.getItem("currentUser") || String(Date.now());
+  sessionStorage.setItem("currentUser", initialUserId);
 
   useEffect(() => {
     fetch("https://backend-portifolio-production.up.railway.app/feedbacks")
@@ -13,19 +15,10 @@ export const FeedbackProvider = ({ children }) => {
       .catch((error) => console.error("Erro ao buscar feedbacks", error));
   }, []);
 
-  useEffect(() => {
-    let userId = sessionStorage.getItem("currentUser");
-    if (!userId) {
-      userId = String(Date.now());
-      sessionStorage.setItem("currentUser", userId);
-    }
-  }, []);
-
   // Criação de um novo feedback
   const addFeedback = (feedback) => {
-    const userId = sessionStorage.getItem("currentUser");
-
     const newFeedback = {
+      userId: initialUserId,
       name: feedback.name,
       comment: feedback.comment,
     };
@@ -46,6 +39,11 @@ export const FeedbackProvider = ({ children }) => {
   const editFeedback = (updatedFeedback) => {
     const userId = sessionStorage.getItem("currentUser");
 
+    if(userId !== updatedFeedback.userId) {
+      alert("Você não tem permissão para editar esse feedback.");
+      return;
+    }
+
     fetch(
       `https://backend-portifolio-production.up.railway.app/feedbacks/${updatedFeedback.id}`,
       {
@@ -56,11 +54,7 @@ export const FeedbackProvider = ({ children }) => {
     )
       .then((response) => response.json())
       .then((data) => {
-        setFeedbacks(
-          feedbacks.map((feedback) =>
-            feedback.id === data.id ? data : feedback
-          )
-        );
+        setFeedbacks((prev) => prev.map((feedback) => feedback.id === data.id ? data : feedback));
       })
       .catch((error) => console.error("Erro ao editar feedback", error));
   };
@@ -68,6 +62,12 @@ export const FeedbackProvider = ({ children }) => {
   // Deletar um feedback
   const deleteFeedback = (feedbackId) => {
     const userId = sessionStorage.getItem("currentUser");
+    const isFeedbackOwner = feedbacks.find((f) => f.id === feedbackId)
+
+    if (!isFeedbackOwner || isFeedbackOwner.userId !== userId) {
+      alert("Você não tem permissão para deletar esse feedback.");
+      return;
+    }
 
     fetch(
       `https://backend-portifolio-production.up.railway.app/feedbacks/${feedbackId}`,
@@ -78,9 +78,7 @@ export const FeedbackProvider = ({ children }) => {
       }
     )
       .then(() => {
-        setFeedbacks(
-          feedbacks.filter((feedback) => feedback.id !== feedbackId)
-        );
+        setFeedbacks((prev) => prev.filter((feedback) => feedback.id !== feedbackId));
       })
       .catch((error) => console.error("Erro ao deletar feedback", error));
   };

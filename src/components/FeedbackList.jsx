@@ -69,7 +69,7 @@ const FeedbackList = () => {
           feedbacks.map((feedback) => (
             <div
               key={feedback.id}
-              className="flex flex-col gap-2 border-l-2 border-orange-600 rounded-lg p-2 my-6"
+              className="flex flex-col gap-2 border-l-2 border-orange-500 p-2 my-6"
             >
               <h3 className="text-start text-lg dark:border-slate-600">
                 <span className="font-semibold">Nome: </span>
