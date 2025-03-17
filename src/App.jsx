@@ -12,7 +12,7 @@ import SoftSkill from "./components/SoftSkill";
 
 function App() {
   return (
-    <main className="max-w-[1024px] mx-auto text-center" id="home">
+    <main className="max-w-[1024px] mx-auto text-center px-2 lg:px-0" id="home">
       <Navbar />
       <Header />
       <SocialLinks />

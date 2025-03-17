@@ -3,7 +3,7 @@ const Footer = () => {
 
     return (
         <footer>
-            <div className="font-italic text-center text-sm mt-10 pt-2 border-t-2 border-orange-400 dark:text-white">
+            <div className="font-italic text-center text-sm mt-10 py-2 border-t-2 border-slate-200 dark:border-slate-600 dark:text-white">
                 <p>Copyright © <span>{CurrentYear}</span> Maxjannyfer Malato. Todos os direitos reservados.</p>
             </div>
         </footer>
