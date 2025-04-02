@@ -2,8 +2,21 @@ import loggieImage from "../assets/images/loggie.jpg";
 import cadastroUsuarioImage from "../assets/images/cadastro-usuario.png";
 import previsaTempoImage from "../assets/images/previsao-tempo.png";
 import gallery from "../assets/images/gallery.png";
+import monti from "../assets/images/monti.png";
 
 const projects = [
+    {
+        title: "Monti.",
+        description: "Uma loja virtual simples, mas com grandes recursos.",
+        image: monti,
+        demoLink: "https://monti-ecommerce.vercel.app/",
+        codeLink: "https://github.com/maxmalato/monti",
+        HardSkills: [
+            { icon: "devicon-typescript-plain colored" },
+            { icon: "devicon-nextjs-plain" },
+            { icon: "devicon-tailwindcss-original colored" },
+        ],
+    },
     {
         title: "Gallery",
         description: "Buscar imagens e salvar fotos favoritas de forma prática e personalizada.",
@@ -23,10 +36,10 @@ const projects = [
         demoLink: "https://app-loggie.onrender.com/",
         codeLink: "https://github.com/maxmalato/app-loggie",
         HardSkills: [
-            {icon: "devicon-javascript-plain colored"},
-            {icon: "devicon-react-original colored"},
-            {icon: "devicon-tailwindcss-original colored"},
-            {icon: "devicon-axios-plain"},
+            { icon: "devicon-javascript-plain colored" },
+            { icon: "devicon-react-original colored" },
+            { icon: "devicon-tailwindcss-original colored" },
+            { icon: "devicon-axios-plain" },
         ]
     },
     {
@@ -41,7 +54,7 @@ const projects = [
             { icon: "devicon-nodejs-plain colored" },
             { icon: "devicon-axios-plain" },
             { icon: "devicon-prisma-original" },
-            { icon: "devicon-express-original"}
+            { icon: "devicon-express-original" }
         ]
     },
     {
@@ -57,6 +70,8 @@ const projects = [
         ]
     },
 ];
+
+import PropTypes from 'prop-types';
 
 const ProjectCard = ({ title, description, image, demoLink, codeLink, HardSkills }) => {
     return (
